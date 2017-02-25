@@ -1,0 +1,269 @@
+button, input.button, .button {
+	display: inline-block;
+	user-select: none;
+	transition: all $transition_time $transition_ease;
+	background: $light_gray;
+	color: $color;
+	border: 1px solid $light_gray;
+	padding: 0 1.6rem;
+	font-size: .9rem;
+	height: 3rem;
+	line-height: 3rem;
+	cursor: pointer;
+	border-radius: 3px;
+	font-weight: 500;
+	text-align: center;
+
+	&.button-small{
+		font-size: .7rem;
+		height: auto;
+		line-height: 1;
+		padding: 5px 10px;
+	}
+
+	&.button-outline {
+		background: transparent;
+		color: $gray;
+		border-color: $gray;
+
+		&.hover-red:hover:enabled{
+			background: transparent;
+			color: $red;
+			border-color: $red;
+		}
+
+		&.hover-green:hover:enabled{
+			background: transparent;
+			color: $green;
+			border-color: $green;
+		}
+
+		&.hover-blue:hover:enabled{
+			background: transparent;
+			color: $blue;
+			border-color: $blue;
+		}
+	}
+
+	&.button-transparent {
+		background: transparent;
+		color: $gray;
+		border-color: transparent;
+
+		&.red:enabled{
+			color: $red;
+		}
+
+		&.green:enabled{
+			color: $green;
+		}
+
+		&.blue:enabled{
+			color: $blue;
+		}
+
+		&.hover-red:hover:enabled{
+			background: transparent;
+			color: $red;
+			border-color: $red;
+		}
+
+		&.hover-green:hover:enabled{
+			background: transparent;
+			color: $green;
+			border-color: transparent;
+		}
+
+		&.hover-blue:hover:enabled{
+			background: transparent;
+			color: $blue;
+			border-color: transparent;
+		}
+	}
+
+	&:hover:enabled{
+		background: darken($light_gray, 5%);
+		border-color: darken($light_gray, 5%);
+
+		&.button-transparent {
+			background: transparent;
+			border-color: transparent;
+			color: $light_gray;
+		}
+
+		.c-icon:before, .c-icon:after{
+			background: darken($light_gray, 5%);
+		}
+	}
+
+	&:focus {
+		outline: 0;
+		box-shadow: 0 0 0 1px #fff,0 0 2px 2px $blue;
+	}
+
+	&.button-block {
+		display: block;
+		width: 100%;
+		padding: 0;
+		height: 3.3rem;
+		line-height: 3.3rem;
+		font-weight: 500;
+		font-size: 20px;
+	}
+
+	&.button-full {
+		display: block;
+		width: 100%;
+	}
+
+	&.button-green {
+		color: white;
+		background: $green;
+		border: 1px solid $green;
+
+		.c-icon:before, .c-icon:after{
+			background: white;
+		}
+
+		&.button-outline {
+			background: transparent;
+			color: $green;
+
+			.c-icon:before, .c-icon:after{
+				background: $green;
+			}
+		}
+
+		&:hover:enabled{
+			color: white;
+			background: darken($green, 5%);
+			border-color: darken($green, 5%);
+
+			.c-icon:before, .c-icon:after{
+				background: white;
+			}
+		}
+	}
+
+	&.button-red{
+		background: $red;
+		border-color: $red;
+		color: white;
+
+		.c-icon:before, .c-icon:after{
+			background: white;
+		}
+
+		&.button-outline {
+			background: transparent;
+			color: $red;
+
+			.c-icon:before, .c-icon:after{
+				background: $red;
+			}
+		}
+
+		&:hover:enabled{
+			color: white;
+			background: darken($red, 5%);
+			border-color: darken($red, 5%);
+
+			.c-icon:before, .c-icon:after{
+				background: white;
+			}
+		}
+	}
+
+	&.button-blue{
+		background: $blue;
+		border-color: $blue;
+		color: white;
+
+		.c-icon:before, .c-icon:after{
+			background: white;
+		}
+
+		&.button-outline {
+			background: transparent;
+			color: $blue;
+
+			.c-icon:before, .c-icon:after{
+				background:$blue;
+			}
+		}
+
+		&:hover:enabled{
+			color: white;
+			background: darken($blue, 5%);
+			border-color: darken($blue, 5%);
+
+			.c-icon:before, .c-icon:after{
+				background: white;
+			}
+		}
+	}
+
+	&.button-light-blue{
+		background: $light_blue;
+		border-color: $light_blue;
+		color: white;
+
+		.c-icon:before, .c-icon:after{
+			background: white;
+		}
+
+		&.button-outline {
+			background: transparent;
+			color: $light_blue;
+
+			.c-icon:before, .c-icon:after{
+				background: $light_blue;
+			}
+		}
+
+		&:hover:enabled{
+			color: white;
+			background: darken($light_blue, 5%);
+			border-color: darken($light_blue, 5%);
+
+			.c-icon:before, .c-icon:after{
+				background: white;
+			}
+		}
+	}
+
+	&.button-gray{
+		background: $gray;
+		border-color: $gray;
+		color: white;
+
+		.c-icon:before, .c-icon:after{
+			background: white;
+		}
+
+		&.button-outline {
+			background: transparent;
+			color: $gray;
+
+			.c-icon:before, .c-icon:after{
+				background: $gray;
+			}
+		}
+
+		&:hover:enabled{
+			color: white;
+			background: darken($gray, 5%);
+			border-color: darken($gray, 5%);
+
+			.c-icon:before, .c-icon:after{
+				background: white;
+			}
+		}
+	}
+
+	&:disabled{
+		cursor: not-allowed!important;
+		opacity: 0.8;
+	}
+
+}

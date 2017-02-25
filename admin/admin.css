@@ -1,0 +1,11 @@
+.qtranxs-lang-switch-wrap li.qtranxs-lang-switch {
+	margin-bottom: 0;
+	padding: 10px 15px;
+}
+
+/* Clear Fix */
+.clearfix:after {
+	content: " ";
+	display: table;
+	clear: both;
+}

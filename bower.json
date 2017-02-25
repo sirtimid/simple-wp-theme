@@ -1,0 +1,24 @@
+{
+  "name": "theme",
+  "description": "Wordpress Template",
+  "main": "",
+  "authors": [
+    "sirtimid"
+  ],
+  "license": "BSD",
+  "keywords": [
+    "Wordpress"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "fastclick": "^1.0.6"
+  }
+}

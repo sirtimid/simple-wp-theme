@@ -1,0 +1,24 @@
+{
+  "name": "Template",
+  "version": "0.0.1",
+  "description": "Wordpress Template",
+  "scripts": {
+    "test": ""
+  },
+  "keywords": [
+    "Wordpress"
+  ],
+  "author": "sirtimid",
+  "repository": "sirtimid/simple-wp-theme",
+  "license": "BSD",
+  "devDependencies": {
+    "grunt": "~1.0.1",
+    "grunt-contrib-cssmin": "^1.0.2",
+    "grunt-contrib-jshint": "~1.0.0",
+    "grunt-contrib-sass": "~1.0.0",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-contrib-watch": "~1.0.0",
+    "grunt-sass": "^1.2.1",
+    "matchdep": "^1.0.1"
+  }
+}

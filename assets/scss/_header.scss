@@ -1,0 +1,19 @@
+header{
+	.header-nav{
+		display: inline-block;
+		margin-left: 40px;
+
+		@media (max-width: 420px) {
+			// display: block;
+			margin-left: 20px;
+		}
+
+		ul,li{
+			display: inline-block;
+		}
+
+		li+li{
+			margin-left: 20px;
+		}
+	}
+}
