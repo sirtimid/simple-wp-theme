@@ -5,8 +5,9 @@ if ( !function_exists( 'theme_enqueue_scripts' ) ) {
 	function theme_enqueue_scripts() {
 		$ver = '0.1';
 		$min = '.min';
-		if(strpos($_SERVER['SERVER_NAME'], '.dev') > -1){
-			wp_register_script('livereload', 'http://localhost:35729/livereload.js?snipver=1', null, false, true);
+		$extension = substr($_SERVER['SERVER_NAME'], strrpos($_SERVER['SERVER_NAME'], '.')+1);
+		if(!in_array($extension, array('gr','com','org','eu','net'))){
+			wp_register_script('livereload', '//'.$_SERVER['SERVER_NAME'].':35729/livereload.js?snipver=1', null, false, true);
 			wp_enqueue_script('livereload');
 			$min = '';
 		}
