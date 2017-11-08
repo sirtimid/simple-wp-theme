@@ -25,12 +25,6 @@ $ npm install && bower install
 Developing
 ------------
 
-Change livereload URL in ./includes/init.php file for reloading while you develop
-
-```
-wp_register_script('livereload', 'http://localhost:35729/livereload.js?snipver=1', null, false, true);
-```
-
 Watch the change of .scss files and build the .css
 
 ```bash
