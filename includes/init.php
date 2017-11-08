@@ -49,40 +49,6 @@ if ( !function_exists( 'theme_setup' ) ) {
 }
 add_action( 'after_setup_theme', 'theme_setup' );
 
-// Initialize options page for use in ACF pro
-if ( !function_exists( 'theme_options_init' ) ) {
-	function theme_options_init() {
-		if( function_exists('acf_add_options_page') ) {
-			$page = acf_add_options_page(array(
-				'page_title'  => 'Theme Settings',
-				'menu_title'  => 'Theme Settings',
-				'menu_slug'   => 'theme-settings',
-				'capability'  => 'edit_posts',
-				'redirect'    => false,
-				'position' => 58
-				// 'icon_url' => ''
-			));
-		}
-	}
-}
-add_action('init', 'theme_options_init');
-
-// add admin styles
-if ( !function_exists( 'admin_styles' ) ) {
-	function admin_styles() {
-		wp_enqueue_style( 'admin_css', get_stylesheet_directory_uri() . '/admin/admin.css', false );
-	}
-}
-add_action('admin_head', 'admin_styles');
-
-// add tinymce editor styles
-if ( !function_exists( 'custom_add_editor_styles' ) ) {
-	function custom_add_editor_styles() {
-			add_editor_style( get_stylesheet_directory_uri() . '/admin/editor.css' );
-	}
-}
-add_action( 'admin_init', 'custom_add_editor_styles' );
-
 // filter to remove TinyMCE emojis
 if ( !function_exists( 'disable_emojicons_tinymce' ) ) {
 	function disable_emojicons_tinymce( $plugins ) {
@@ -133,29 +99,6 @@ if ( !function_exists( 'cb_remove_smileys' ) ) {
 	add_filter('option_use_smilies','cb_remove_smileys',99,1);
 }
 
-// disable default dashboard widgets
-if ( !function_exists( 'disable_default_dashboard_widgets' ) ) {
-	function disable_default_dashboard_widgets() {
-		global $wp_meta_boxes;
-		// unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);    // Right Now Widget
-		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_activity']);        // Activity Widget
-		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']); // Comments Widget
-		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);  // Incoming Links Widget
-		unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);         // Plugins Widget
-
-		unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);    // Quick Press Widget
-		unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts']);     // Recent Drafts Widget
-		unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);           //
-		unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);         //
-
-		// remove plugin dashboard boxes
-		// unset($wp_meta_boxes['dashboard']['normal']['core']['yoast_db_widget']);           // Yoast's SEO Plugin Widget
-		unset($wp_meta_boxes['dashboard']['normal']['core']['rg_forms_dashboard']);        // Gravity Forms Plugin Widget
-		unset($wp_meta_boxes['dashboard']['normal']['core']['bbp-dashboard-right-now']);   // bbPress Plugin Widget
-	}
-	add_action( 'wp_dashboard_setup', 'disable_default_dashboard_widgets' );
-}
-
 // remove WP version from RSS
 if ( !function_exists( 'rss_version' ) ) {
 	function rss_version() { return ''; }
@@ -193,55 +136,3 @@ if ( !function_exists( 'remove_recent_comments_style' ) ) {
 	}
 	add_action( 'wp_head', 'remove_recent_comments_style', 1 );
 }
-
-if ( !function_exists( 'remove_menus' ) ) {
-	function remove_menus(){
-		// remove_menu_page( 'index.php' );                  //Dashboard
-		// remove_menu_page( 'edit.php' );                   //Posts
-		// remove_menu_page( 'upload.php' );                 //Media
-		// remove_menu_page( 'edit.php?post_type=page' );    //Pages
-		remove_menu_page( 'edit-comments.php' );          //Comments
-		// remove_menu_page( 'themes.php' );                 //Appearance
-		// remove_menu_page( 'plugins.php' );                //Plugins
-		// remove_menu_page( 'users.php' );                  //Users
-		// remove_menu_page( 'tools.php' );                  //Tools
-		// remove_menu_page( 'options-general.php' );        //Settings
-	}
-	add_action( 'admin_menu', 'remove_menus' );
-}
-
-// Enable font size & font family selects in the editor
-if ( !function_exists( 'wpex_mce_buttons' ) ) {
-	function wpex_mce_buttons( $buttons ) {
-			// array_unshift( $buttons, 'fontselect' ); // Add Font Select
-			array_unshift( $buttons, 'fontsizeselect' ); // Add Font Size Select
-			// array_unshift($buttons, 'styleselect'); // Add stle select
-			return $buttons;
-	}
-	add_filter( 'mce_buttons_2', 'wpex_mce_buttons' );
-}
-
-// Customize mce editor font sizes
-if ( !function_exists( 'wpex_mce_text_sizes' ) ) {
-	function wpex_mce_text_sizes( $initArray ){
-		$initArray['fontsize_formats'] = "9px 10px 11px 12px 13px 14px 16px 18px 21px 24px 28px 32px 36px";
-		return $initArray;
-	}
-	add_filter( 'tiny_mce_before_init', 'wpex_mce_text_sizes' );
-}
-
-if ( !function_exists( 'loginLogo' ) ) {
-	function loginLogo(){
-		echo '<style type="text/css">
-			body.login div#login h1 a {
-				width:100%;
-				background-image: url('. get_stylesheet_directory_uri() . '/assets/images/logo.svg);
-				background-size: auto 60px;
-				height:60px;
-			}
-		</style>';
-	}
-	add_action( 'login_enqueue_scripts', 'loginLogo' );
-}
-
-?>

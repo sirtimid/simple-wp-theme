@@ -90,6 +90,7 @@ if(!function_exists('get_video_image')){
 	}
 }
 
+// parse string to return youtube id
 if(!function_exists('youtube_id')){
 	function youtube_id($url) {
 		parse_str( parse_url( $url, PHP_URL_QUERY ), $my_array_of_vars );
@@ -113,5 +114,3 @@ if(!function_exists('get_url_by_template')){
 		return $url;
 	}
 }
-
-?>
