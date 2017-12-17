@@ -52,7 +52,7 @@ module.exports = function(grunt) {
 					sourcemap: false
 				},
 				files: {
-					'assets/css/theme.css': 'scss/theme.scss',
+					'assets/css/theme.css': 'assets/scss/theme.scss',
 				}
 			}
 		},
