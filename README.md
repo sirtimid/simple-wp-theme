@@ -6,11 +6,14 @@ A very simple wordpress starter theme, intended for quick and simple websites.
 ### Requirements
 
 - [Node.js](http://nodejs.org/download/)
-- [Bower](http://bower.io/)
+- [Yarn](https://yarnpkg.com/en/) or [npm](https://www.npmjs.com/)
 
 ### Uses
 
-- [GruntJS](http://gruntjs.com/) for building Sass styles and uglifying javascript files
+- [Webpack](https://webpack.js.org/) as module bundler. Responsible for building Sass styles and uglifying javascript files
+- [Babel](https://babeljs.io/) for ES6+ support
+- [StandardJS](https://standardjs.com) for JS linter
+- [Stylelint](https://github.com/stylelint/stylelint) for CSS linter
 - [Bourbon](http://bourbon.io/) mixin library for Sass
 
 Installation
@@ -19,7 +22,7 @@ Installation
 ```bash
 $ git clone https://github.com/sirtimid/simple-wp-theme.git
 $ cd ./simple-wp-theme
-$ npm install && bower install
+$ yarn install
 ```
 
 Developing
@@ -28,7 +31,7 @@ Developing
 Watch the change of .scss files and build the .css
 
 ```bash
-$ grunt watch
+$ yarn watch
 ```
 
 Build it
@@ -37,5 +40,5 @@ Build it
 Build the project to minify assets
 
 ```bash
-$ grunt build
+$ yarn build
 ```
