@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const settings = {
   host: 'localhost',
@@ -61,19 +62,19 @@ module.exports = {
         ]
       },
       {
-        test: /\.(sass|scss)$/,
+        test: /\.scss$/,
         exclude: [/node_modules/],
-        use: [
-          {
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader', options: { sourceMap: true }
-          },
-          {
-            loader: 'sass-loader', options: { sourceMap: true }
-          }
-        ]
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader', options: { sourceMap: true }
+            },
+            {
+              loader: 'sass-loader', options: { sourceMap: true }
+            }
+          ]
+        })
       },
       {
         test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/,
@@ -89,6 +90,10 @@ module.exports = {
     new CleanWebpackPlugin(['dist']),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
+    new ExtractTextPlugin({
+      filename: '../css/theme.css',
+      allChunks: true
+    }),
     new BrowserSyncPlugin({
       host: settings.host,
       port: settings.port,

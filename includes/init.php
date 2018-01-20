@@ -32,7 +32,7 @@ if ( !function_exists( 'theme_enqueue_scripts' ) ) {
 		);
 		wp_enqueue_script('theme');
 
-		wp_enqueue_style('theme', get_stylesheet_directory_uri() . '/assets/css/theme'.$min.'.css', array(), $ver);
+		wp_enqueue_style('theme', get_stylesheet_directory_uri() . '/assets/css/theme.css', array(), $ver);
 	}
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_scripts', 11);
