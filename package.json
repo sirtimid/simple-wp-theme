@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Wordpress Template",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "standard",
     "watch": "webpack --progress --watch",
     "start": "webpack --progress --watch",
     "build": "webpack -p"
@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.1",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "clean-webpack-plugin": "^0.1.16",
@@ -28,6 +29,8 @@
     "node-sass": "^4.7.2",
     "raw-loader": "^0.5.1",
     "sass-loader": "^6.0.6",
+    "standard": "^10.0.3",
+    "standard-loader": "^6.0.1",
     "style-loader": "^0.19.1",
     "stylelint": "^8.1.1",
     "stylelint-config-standard": "^17.0.0",
