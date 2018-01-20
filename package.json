@@ -10,7 +10,7 @@
   ],
   "author": "sirtimid",
   "repository": "sirtimid/simple-wp-theme",
-  "license": "BSD",
+  "license": "MIT",
   "devDependencies": {
     "grunt": "~1.0.1",
     "grunt-contrib-cssmin": "^1.0.2",
