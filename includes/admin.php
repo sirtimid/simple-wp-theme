@@ -175,3 +175,16 @@ if ( !function_exists('greeklish_slugs') ) {
 	}
 }
 add_filter('sanitize_title', 'greeklish_slugs', 1);
+
+
+// Disable WP Multilang translation in ACF field group
+if ( !function_exists('wpm_acf_field_group') ) {
+	function wpm_acf_field_group(){
+		if ( defined( 'WPM_PLUGIN_FILE' ) ) {
+			remove_class_filter( 'wpm_post_acf-field-group_config', 'WPM\Includes\Integrations\WPM_Acf', 'add_config' );
+			remove_class_filter( 'acf/update_field', 'WPM\Includes\Integrations\WPM_Acf', 'update_field_pro', 99 );
+			remove_filter( 'acf/translate_field_group', 'wpm_translate_value', 5 );
+		}
+	}
+	add_action('admin_init', 'wpm_acf_field_group');
+}
