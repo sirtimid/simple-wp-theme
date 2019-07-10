@@ -1,0 +1,49 @@
+@keyframes fade-out {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes rotate {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes from-bottom {
+	from{
+		transform: translateY(100%);
+	}
+	to{
+		transform: translateY(0);
+	}
+}
+
+@keyframes to-bottom {
+	from{
+		transform: translateY(0);
+	}
+	to{
+		transform: translateY(100%);
+	}
+}
+
+.fade-in {
+	animation-name: fade-in;
+	animation-duration: 0.3s;
+}

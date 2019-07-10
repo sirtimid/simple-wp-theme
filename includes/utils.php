@@ -39,6 +39,20 @@ if(!function_exists('strtoupper_utf8')){
 	}
 }
 
+if(!function_exists('normalize')){
+	function normalize($str) {
+		$str = strtoupper_utf8(greeklish(trim($str)));
+		$unwanted_array = array(
+			'Š'=>'S', 'š'=>'s', 'Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
+      'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U',
+      'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss', 'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c',
+      'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o',
+      'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y'
+    );
+    return strtr( $str, $unwanted_array );
+	}
+}
+
 if(!function_exists('force_download')){
 	function force_download($url) {
 		set_time_limit(0);
@@ -76,14 +90,14 @@ if(!function_exists('get_video_image')){
 				$id = $matches[0];
 			}
 			if($id != false){
-				$hash = unserialize(@file_get_contents("http://vimeo.com/api/v2/video/$id.php"));
+				$hash = unserialize(@file_get_contents("https://vimeo.com/api/v2/video/$id.php"));
 				$thumb = $hash[0]['thumbnail_medium'];
 			}
 
 		}else{
 			parse_str( parse_url( $url, PHP_URL_QUERY ), $my_array_of_vars );
 			$id = $my_array_of_vars['v'];
-			$thumb = 'http://img.youtube.com/vi/'.$id.'/0.jpg';
+			$thumb = 'https://img.youtube.com/vi/'.$id.'/0.jpg';
 		}
 
 		return $thumb;
@@ -98,19 +112,8 @@ if(!function_exists('youtube_id')){
 	}
 }
 
-if(!function_exists('get_url_by_template')){
-	function get_url_by_template($tmpl){
-		$pages = query_posts(array(
-			'post_type' =>'page',
-			'meta_key'  =>'_wp_page_template',
-			'meta_value'=> $tmpl
-		));
-
-		$url = null;
-		if(isset($pages[0])) {
-			$url = get_page_link($pages[0]->ID);
-		}
-		wp_reset_query();
-		return $url;
+if(!function_exists('get_asset')){
+	function get_asset($path){
+		return get_stylesheet_directory_uri() . '/assets/'. $path;
 	}
 }

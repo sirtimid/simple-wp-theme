@@ -10,7 +10,7 @@ module.exports = function(grunt) {
 		watch : {
 			sass : {
 				files : ['assets/scss/**/*.scss'],
-				tasks : ['sass', 'cssmin'],
+				tasks : ['sass', 'postcss', 'cssmin'],
 				options : {
 					livereload : true
 				}
@@ -57,6 +57,18 @@ module.exports = function(grunt) {
 			}
 		},
 
+		postcss: {
+	    options: {
+	      map: false, // inline sourcemaps
+	      processors: [
+	        require('autoprefixer')({browsers: 'last 3 versions'}), // add vendor prefixes
+	      ]
+	    },
+	    dist: {
+	      src: 'assets/css/theme.css'
+	    }
+	  },
+
 		cssmin: {
 			target: {
 				files: {
@@ -99,6 +111,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('build', [
 		'jshint',
 		'sass',
+		'postcss',
 		'cssmin',
 		'uglify'
 	]);

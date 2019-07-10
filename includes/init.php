@@ -3,7 +3,7 @@
 // add scripts
 if ( !function_exists( 'theme_enqueue_scripts' ) ) {
 	function theme_enqueue_scripts() {
-		$ver = '0.1';
+		$ver = '0.0.2';
 		$min = '.min';
 		$extension = substr($_SERVER['SERVER_NAME'], strrpos($_SERVER['SERVER_NAME'], '.')+1);
 		if(!in_array($extension, array('gr','com','org','eu','net'))){

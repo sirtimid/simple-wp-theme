@@ -8,6 +8,7 @@ html {
 	-ms-text-size-adjust: 100%;
 	background: $link_color;
 }
+
 html,
 body,
 button,
@@ -46,7 +47,7 @@ body {
 a {
 	color: $color;
 	text-decoration: none;
-	@include transition(color $transition_time $transition_ease);
+	transition: color $transition;
 }
 a:focus {
 	outline: 0;
@@ -140,15 +141,6 @@ iframe {
 	Structural Styles, Media Queries & Page Styling
 /* ========================================================================== */
 
-@include keyframes(fadeIn) {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
-}
-
 p{
 	margin:0;
 	padding:0;
@@ -157,28 +149,15 @@ p{
 body{
 	height:100%;
 	padding: 0;
-	@include animation-duration(600ms);
-	@include animation-fill-mode(both);
-	@include animation-name(fadeIn);
-}
-
-div[role="document"]{
-	background: $background;
-	background-repeat: no-repeat;
-	background-size: cover;
-	min-height: 100%;
+	animation-duration: 600ms;
+	animation-fill-mode: both;
+	animation-name: fade-in;
 }
 
 main{
 	@include clearfix();
 	position: relative;
 	z-index: 2;
-}
-
-canvas{
-	@include position(fixed, 0 0 0 0);
-	background: $background;
-	z-index: 1;
 }
 
 header, footer{
@@ -201,27 +180,6 @@ a{
 	}
 }
 
-.scrolled-back{
-	@include position(fixed, 0 0 0 0);
-	z-index: 1;
-
-	@media (max-width: 420px) {
-		background: $background;
-		position: static;
-		padding: 0 20px 3em;
-
-		img + img{
-			margin-top: 1em;
-		}
-	}
-
-	img{
-		display: block;
-		width: 100%;
-		height: auto;
-	}
-}
-
 .video-container {
 	position: relative;
 	padding-bottom: 56.25%; /* 16:9 */
@@ -234,4 +192,47 @@ a{
 	left: 0;
 	width: 100%;
 	height: 100%;
+}
+
+/* Overrides */
+body{
+	.m-t-none{margin-top:0 !important}
+	.m-t-xxs{margin-top: 1px!important}
+	.m-t-xs{margin-top: 5px!important}
+	.m-t-sm{margin-top: 10px!important}
+	.m-t{margin-top: 15px!important}
+	.m-t-md{margin-top: 20px!important}
+	.m-t-lg{margin-top: 30px!important}
+	.m-t-xl{margin-top: 40px!important}
+	.m-t-xxl{margin-top: 50px!important}
+
+	.m-b-none{margin-bottom:0 !important}
+	.m-b-xxs{margin-bottom: 1px!important}
+	.m-b-xs{margin-bottom: 5px!important}
+	.m-b-sm{margin-bottom: 10px!important}
+	.m-b{margin-bottom: 15px!important}
+	.m-b-md{margin-bottom: 20px!important}
+	.m-b-lg{margin-bottom: 30px!important}
+	.m-b-xl{margin-bottom: 40px!important}
+	.m-b-xxl{margin-bottom: 50px!important}
+
+	.m-r-none{margin-right:0 !important}
+	.m-r-xxs{margin-right: 1px!important}
+	.m-r-xs{margin-right: 5px!important}
+	.m-r-sm{margin-right: 10px!important}
+	.m-r{margin-right: 15px!important}
+	.m-r-md{margin-right: 20px!important}
+	.m-r-lg{margin-right: 30px!important}
+	.m-r-xl{margin-right: 40px!important}
+	.m-r-xxl{margin-right: 50px!important}
+
+	.m-l-none{margin-left:0 !important}
+	.m-l-xxs{margin-left: 1px!important}
+	.m-l-xs{margin-left: 5px!important}
+	.m-l-sm{margin-left: 10px!important}
+	.m-l{margin-left: 15px!important}
+	.m-l-md{margin-left: 20px!important}
+	.m-l-lg{margin-left: 30px!important}
+	.m-l-xl{margin-left: 40px!important}
+	.m-l-xxl{margin-left: 50px!important}
 }

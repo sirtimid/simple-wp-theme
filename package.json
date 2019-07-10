@@ -1,6 +1,6 @@
 {
   "name": "Template",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Wordpress Template",
   "scripts": {
     "test": ""
@@ -9,15 +9,17 @@
     "Wordpress"
   ],
   "author": "sirtimid",
-  "repository": "sirtimid/simple-wp-theme",
+  "repository": "git@github.com:sirtimid/simple-wp-theme.git",
   "license": "BSD",
   "devDependencies": {
+    "autoprefixer": "^9.5.1",
     "grunt": "~1.0.1",
     "grunt-contrib-cssmin": "^1.0.2",
     "grunt-contrib-jshint": "~1.0.0",
     "grunt-contrib-sass": "~1.0.0",
     "grunt-contrib-uglify": "^2.0.0",
     "grunt-contrib-watch": "~1.0.0",
+    "grunt-postcss": "^0.9.0",
     "grunt-sass": "^1.2.1",
     "matchdep": "^1.0.1"
   }

@@ -4,27 +4,69 @@
 
 		var $window = $(window)
 		var $html = $('html')
-		var $scrolled = $('.scrolled-back')
+		var $body = $('body')
+		var winW = $window.width()
+		var winH = $window.height()
+		var winScrollTop = $window.scrollTop()
 
-		$('article iframe').wrap('<div class="video-container"></div>')
+		var app = {
 
-		$('.works a').on('touchstart mouseover', function(){
-			$('body').addClass('stealth')
-			$('#'+$(this).attr('data-id')).css({opacity:1})
-		}).on('touchend mouseout', function(){
-			$('body').removeClass('stealth')
-			$('#'+$(this).attr('data-id')).css({opacity:0})
-		})
+			// set global actions
+			init: function init(){
+				$('.text-content iframe').wrap('<div class="video-container"></div>')
 
-		var scrollBack = function(){
-			if($window.width() > 420){
-				$scrolled.css({ top: -(($scrolled[0].scrollHeight - $window.height()) * $window.scrollTop() / ($html[0].scrollHeight - $window.height())) })
-			}
+				app.setButtons()
+				app.setAnimations()
+
+				$window.scroll(app.onScroll)
+				$window.resize(app.onResize)
+				$window.trigger('resize')
+			},
+
+			// animate.css like
+			setAnimations: function setAnimations() {
+			  if (Modernizr.touch) return $('.animate').addClass('animated')
+
+		  	var win_height_padded = $window.height() * 1.2
+			  var revealOnScroll = function() {
+			    var scrolled = $window.scrollTop()
+
+			    $('.animate:not(.animated)').each(function (i) {
+			      var $this = $(this)
+
+			      if (scrolled + win_height_padded > $this.offset().top) {
+			      	setTimeout(function(){
+			      		$this.addClass('animated')
+			      	}, ((i+1) * 200) )
+			      }
+			    })
+			  }
+			  revealOnScroll()
+			  $window.on('scroll', revealOnScroll)
+			},
+
+			// burger menu btn
+			setButtons: function setButtons() {
+				$('.toggle-menu').click(function(){
+					$body.toggleClass('open-menu')
+					return false
+				})
+			},
+
+			// on page resize
+			onScroll: function onScroll() {
+				winScrollTop = $window.scrollTop()
+			},
+
+			// on window resize
+			onResize: function onResize() {
+				winW = $window.width()
+				winH = $window.height()
+				app.onScroll()
+			},
+
 		}
 
-		if($scrolled.length){
-			$window.scroll(scrollBack)
-			$window.resize(scrollBack)
-		}
+		app.init()
 	})
 })(jQuery)

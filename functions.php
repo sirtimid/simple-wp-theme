@@ -4,6 +4,7 @@ $includes = [
 	'includes/utils.php',
 	'includes/init.php',
 	'includes/admin.php',
+	'includes/helpers.php',
 	'includes/menu.php',
 	'includes/content.php'
 ];

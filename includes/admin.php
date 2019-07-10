@@ -176,6 +176,14 @@ if ( !function_exists('greeklish_slugs') ) {
 }
 add_filter('sanitize_title', 'greeklish_slugs', 1);
 
+// allow uploading svg, a bit dangerous if public uploading is open
+if(!function_exists('cc_mime_types')){
+	function cc_mime_types($mimes) {
+		$mimes['svg'] = 'image/svg+xml';
+		return $mimes;
+	}
+}
+// add_filter('upload_mimes', 'cc_mime_types');
 
 // Disable WP Multilang translation in ACF field group
 if ( !function_exists('wpm_acf_field_group') ) {

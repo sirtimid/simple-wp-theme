@@ -1,10 +1,9 @@
 @charset "UTF-8";
 
 @import 'variables';
-
-@import "bourbon/bourbon";
 @import 'reset';
 @import 'fonts';
+@import "animations";
 @import 'mixins';
 @import "main";
 @import "grid";

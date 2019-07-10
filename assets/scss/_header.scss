@@ -1,19 +1,53 @@
-header{
+header.main-header {
+	@include sticky;
+	background: white;
+	z-index: 5;
+	height: 80px;
+	line-height: 80px;
+
 	.header-nav{
-		display: inline-block;
-		margin-left: 40px;
+		ul{
+			display: block;
+			@include display(flex);
+			margin: 0;
+			padding: 0 5px;
 
-		@media (max-width: 420px) {
-			// display: block;
-			margin-left: 20px;
+			li{
+				position: relative;
+				display: inline-block;
+				user-select: none;
+				padding: 0 5px;
+
+				a{
+					white-space: nowrap;
+
+					&:hover{
+						color: $hover_color;
+					}
+
+					.home &{
+						color: $link_color;
+
+						&:hover{
+							color: $hover_color;
+						}
+					}
+				}
+
+				&.current-menu-item,
+				&.current_page_parent,
+				&.current_page_item {
+					a{
+						color: $link_color;
+
+						&:hover{
+							color: $hover_color;
+						}
+					}
+				}
+
+			}
 		}
 
-		ul,li{
-			display: inline-block;
-		}
-
-		li+li{
-			margin-left: 20px;
-		}
 	}
 }
