@@ -10,8 +10,9 @@ A very simple wordpress starter theme, intended for quick and simple websites.
 
 ### Uses
 
-- [GruntJS](http://gruntjs.com/) for building Sass styles and uglifying javascript files
-- [Bourbon](http://bourbon.io/) mixin library for Sass
+- [GruntJS](http://gruntjs.com/)
+- [SASS](https://sass-lang.com)
+- [PostCSS](https://github.com/postcss/postcss)
 
 Installation
 ------------
@@ -25,7 +26,7 @@ $ npm install && bower install
 Developing
 ------------
 
-Watch the change of .scss files and build the .css
+Watch the change of *.scss, *.js files and build the .css
 
 ```bash
 $ grunt watch
