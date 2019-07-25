@@ -9,7 +9,12 @@ const plumber = require('gulp-plumber')
 const postcss = require('gulp-postcss')
 const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
+const flexbugsfixes = require('postcss-flexbugs-fixes')
 const livereload = require('gulp-livereload')
+const jshint = require('gulp-jshint')
+const pkg = require('./package')
+const jshintConfig = pkg.jshintConfig
+jshintConfig.lookup = false
 
 /* vendors task */
 gulp.task('vendors', function() {
@@ -21,14 +26,19 @@ gulp.task('vendors', function() {
 	])
 	.pipe(concat('vendors.min.js'))
 	.pipe(uglify())
+	.on('error', console.log)
 	.pipe(gulp.dest('assets/js'))
 })
 
 /* scripts task */
 gulp.task('scripts', function() {
 	return gulp.src('assets/js/theme.js')
+		.pipe(plumber())
+		.pipe(jshint(jshintConfig))
+		.pipe(jshint.reporter('jshint-stylish'))
 		.pipe(rename({suffix: '.min'}))
 		.pipe(uglify())
+		.on('error', console.log)
 		.pipe(gulp.dest('assets/js'))
 		.pipe(livereload())
 })
@@ -37,15 +47,15 @@ gulp.task('scripts', function() {
 gulp.task('sass', function() {
 	gulp.src('assets/scss/theme.scss')
 		.pipe(plumber())
-		.pipe(sass({
-			includePaths: ['scss']
-		}))
+		.pipe(sass({ includePaths: ['scss']}))
+		.on('error', console.log)
 		.pipe(gulp.dest('assets/css'))
 })
 
 /* postcss/cssnano task */
 gulp.task('css', function() {
 	var processors = [
+		flexbugsfixes(),
 		autoprefixer(),
 		cssnano(),
 	]

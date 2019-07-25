@@ -16,6 +16,7 @@
     "cssnano": "^4.1.10",
     "gulp": "3.9.1",
     "gulp-concat": "^2.6.1",
+    "gulp-jshint": "^2.1.0",
     "gulp-livereload": "^4.0.1",
     "gulp-minify-css": "^1.2.4",
     "gulp-plumber": "^1.2.1",
@@ -23,16 +24,36 @@
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
     "gulp-uglify": "^3.0.2",
-    "gulp-util": "^3.0.8"
+    "gulp-util": "^3.0.8",
+    "jshint": "^2.10.2",
+    "jshint-stylish": "^2.2.1",
+    "postcss-flexbugs-fixes": "^4.1.0"
   },
   "dependencies": {
     "fastclick": "^1.0.6",
     "flickity": "^2.2.1",
     "magnific-popup": "^1.1.0",
+    "scrollbooster": "^1.1.0",
     "stickyfilljs": "^2.1.0"
   },
+  "jshintConfig": {
+    "indent": 2,
+    "asi": true,
+    "browser": true,
+    "curly": false,
+    "eqeqeq": false,
+    "eqnull": true,
+    "expr": true,
+    "immed": true,
+    "newcap": true,
+    "noarg": true,
+    "smarttabs": true,
+    "sub": true,
+    "undef": false,
+    "loopfunc": true
+  },
   "browserslist": [
-    "last 3 versions",
+    "last 5 versions",
     "> 1%"
   ]
 }
