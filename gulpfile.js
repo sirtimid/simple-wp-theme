@@ -12,6 +12,7 @@ const cssnano = require('cssnano')
 const flexbugsfixes = require('postcss-flexbugs-fixes')
 const livereload = require('gulp-livereload')
 const jshint = require('gulp-jshint')
+const notify = require('gulp-notify')
 const pkg = require('./package')
 const jshintConfig = pkg.jshintConfig
 jshintConfig.lookup = false
@@ -33,7 +34,7 @@ gulp.task('vendors', function() {
 /* scripts task */
 gulp.task('scripts', function() {
 	return gulp.src('assets/js/theme.js')
-		.pipe(plumber())
+		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
 		.pipe(jshint(jshintConfig))
 		.pipe(jshint.reporter('jshint-stylish'))
 		.pipe(rename({suffix: '.min'}))
@@ -46,7 +47,7 @@ gulp.task('scripts', function() {
 /* sass task */
 gulp.task('sass', function() {
 	gulp.src('assets/scss/theme.scss')
-		.pipe(plumber())
+		.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
 		.pipe(sass({ includePaths: ['scss']}))
 		.on('error', console.log)
 		.pipe(gulp.dest('assets/css'))
